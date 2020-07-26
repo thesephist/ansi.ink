@@ -1,12 +1,14 @@
-# ansi.ink
+# ansi.ink 🎨
 
 `ansi` is an [Ink](https://github.com/thesephist/ink) library for printing with [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code).
 
+![ansi.ink demo screenshot](screenshot.png)
+
 ## Usage
 
-`ansi` functions and constants return a `string` value. For cursor movements, simply pass the constant to the `out()` builtin to send the signal to the terminal. For color output, use the styled text string the way you would use any text string; you can concatenate them to other strings and print them out with `out(0)` or `std.log`.
+`ansi` functions and constants return a `string` value. For cursor movements, simply pass the constant to the `out()` builtin to send the signal to the terminal. For color output, use the styled text string the way you would use any text string; you can concatenate them to other strings and print them out with `out()` or `std.log`.
 
-For example, `out(ansi.ClearLine)` will clear the current terminal output line, and `log((ansi.BoldRed)('bold red text'))` will output a line of bold, red text saying `'bold red text'`.
+For example, `out(ansi.ClearLine)` will clear the current terminal output line, and `log((ansi.BoldRed)('bold red text'))` will output a line of bold, red text saying `bold red text`.
 
 ### Cursor movement
 
@@ -23,7 +25,7 @@ For example, `out(ansi.ClearLine)` will clear the current terminal output line, 
 
 ### Text styling
 
-`ansi` provides an `ansi.style(weight, color)` higher order function to style text being output to a terminal. You can use `ansi.style` with the weight and color constants in the library to make any text coloring function you need. You can use it like
+`ansi` provides a `style(weight, color)` higher order function to style text being output to a terminal. You can use `ansi.style` with the weight and color constants in the library to make any text coloring function you need. You can use it like
 
 ```
 ansi := load('ansi')
@@ -33,9 +35,8 @@ style := ansi.style
 alert := style(ansi.Weight.Bold, ansi.Color.Red)
 
 ` use the function `
-alert('danger: you are about to do something bad!')
+log(alert('danger: you are about to do something bad!'))
 ```
-
 
 For ergonomics, the library also comes with the following default shorthand coloring functions:
 
@@ -69,4 +70,3 @@ DimMagenta := style(Weight.Dim, Color.Magenta)
 DimCyan := style(Weight.Dim, Color.Cyan)
 DimWhite := style(Weight.Dim, Color.White)
 ```
-
